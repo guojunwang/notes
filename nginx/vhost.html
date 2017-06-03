@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>分类整理 layout 布局文件 · GitBook</title>
+        <title>nginx 配置虚拟主机 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="../License/how-to-select.html" />
     
-    <link rel="prev" href="postDelayed.html" />
     
 
     </head>
@@ -114,9 +114,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="postDelayed.html">
+        <li class="chapter " data-level="1.2.1" data-path="../android/postDelayed.html">
             
-                <a href="postDelayed.html">
+                <a href="../android/postDelayed.html">
             
                     
                     循环任务
@@ -127,9 +127,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.2" data-path="layout-split.html">
+        <li class="chapter " data-level="1.2.2" data-path="../android/layout-split.html">
             
-                <a href="layout-split.html">
+                <a href="../android/layout-split.html">
             
                     
                     分类整理 layout 布局文件
@@ -346,9 +346,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../nginx/vhost.html">
+        <li class="chapter active" data-level="1.6.1" data-path="vhost.html">
             
-                <a href="../nginx/vhost.html">
+                <a href="vhost.html">
             
                     
                     nginx 配置虚拟主机
@@ -433,7 +433,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >分类整理 layout 布局文件</a>
+        <a href=".." >nginx 配置虚拟主机</a>
     </h1>
 </div>
 
@@ -448,25 +448,64 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5206;&#x7C7B;&#x6574;&#x7406;-layout-&#x5E03;&#x5C40;&#x6587;&#x4EF6;">&#x5206;&#x7C7B;&#x6574;&#x7406; layout &#x5E03;&#x5C40;&#x6587;&#x4EF6;</h1>
-<p>&#x4E00;&#x76F4;&#x4EE5;&#x6765;&#x9879;&#x76EE;&#x4E2D;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x653E;&#x5728; <code>layout</code> &#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x968F;&#x7740;&#x9879;&#x76EE;&#x8D8A;&#x505A;&#x8D8A;&#x5927;&#xFF0C;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x4E5F;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x591A;&#xFF0C;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x6574;&#x7406;&#x3002;</p>
-<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x89E3;&#x51B3;&#x65B9;&#x6848;</h2>
-<p>&#x5229;&#x7528;Gradle&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;Resource&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x4FEE;&#x6539;layout&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
-<pre><code>sourceSets {
-        main {
-            res.srcDirs = [
-                    &apos;src/main/res/layouts/home&apos;,
-                    &apos;src/main/res/layouts/main&apos;,
-                    &apos;src/main/res&apos;
-            ]
+                                <h1 id="nginx-&#x914D;&#x7F6E;&#x865A;&#x62DF;&#x4E3B;&#x673A;">nginx &#x914D;&#x7F6E;&#x865A;&#x62DF;&#x4E3B;&#x673A;</h1>
+<p><code>nginx</code> &#x914D;&#x7F6E;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x5341;&#x5206;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x6DFB;&#x52A0; <code>server</code> ,&#x4FEE;&#x6539; <code>server_name</code> &#x3001;<code>root</code> &#x5373;&#x53EF;&#x3002;</p>
+<pre><code>server {
+    listen 80;
+    server_name wordpress.dev;
+    access_log /data/wwwlogs/access_nginx.log combined;
+    root /data/www/wordpress;
+    index index.html index.htm index.php;
+    location /nginx_status {
+        stub_status on;
+        access_log off;
+        allow 127.0.0.1;
+        deny all;
+        }
+    location ~ [^/]\.php(/|$) {
+        #fastcgi_pass remote_php_ip:9000;
+        fastcgi_pass unix:/dev/shm/php-cgi.sock;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+        }
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|ico)$ {
+        expires 30d;
+        access_log off;
+        }
+    location ~ .*\.(js|css)?$ {
+        expires 7d;
+        access_log off;
         }
     }
-</code></pre><p><img src="http://onru0wbs0.bkt.clouddn.com/android/2017-04-09-16-25-40.jpg" alt=""></p>
-<p><img src="http://onru0wbs0.bkt.clouddn.com/android/2017-04-09-16-27-51.jpg" alt=""></p>
-<p><a href="http://www.jianshu.com/p/c2c8461999be" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;1</a></p>
-<p><a href="http://www.jianshu.com/p/fcc831e87b3d" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;2</a></p>
-<p><a href="http://blog.csdn.net/u011156012/article/details/50575117" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;3</a></p>
-
+</code></pre><p>&#x9ED8;&#x8BA4; <code>nginx.conf</code></p>
+<pre><code>server {
+    listen 80;
+    server_name _;
+    access_log /data/wwwlogs/access_nginx.log combined;
+    root /data/wwwroot/default;
+    index index.html index.htm index.php;
+    location /nginx_status {
+        stub_status on;
+        access_log off;
+        allow 127.0.0.1;
+        deny all;
+        }
+    location ~ [^/]\.php(/|$) {
+        #fastcgi_pass remote_php_ip:9000;
+        fastcgi_pass unix:/dev/shm/php-cgi.sock;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+        }
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|ico)$ {
+        expires 30d;
+        access_log off;
+        }
+    location ~ .*\.(js|css)?$ {
+        expires 7d;
+        access_log off;
+        }
+    }
+</code></pre>
                                 
                                 </section>
                             
@@ -493,10 +532,10 @@
 
             
                 
-                <a href="postDelayed.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 循环任务">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="../License/how-to-select.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 如何选择开源许可证？">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -505,7 +544,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"分类整理 layout 布局文件","level":"1.2.2","depth":2,"next":{"title":"Web 前端","level":"1.3","depth":1,"ref":"","articles":[{"title":"跨域请求","level":"1.3.1","depth":2,"path":"front-end/cors.md","ref":"./front-end/cors.md","articles":[]},{"title":"gulp 压缩图片","level":"1.3.2","depth":2,"path":"front-end/gulp-imagemin.md","ref":"./front-end/gulp-imagemin.md","articles":[]},{"title":"layer——优雅的web弹层组件","level":"1.3.3","depth":2,"path":"front-end/layer.md","ref":"./front-end/layer.md","articles":[]},{"title":"NPM","level":"1.3.4","depth":2,"path":"front-end/npm.md","ref":"./front-end/npm.md","articles":[]}]},"previous":{"title":"循环任务","level":"1.2.1","depth":2,"path":"android/postDelayed.md","ref":"./android/postDelayed.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/layout-split.md","mtime":"2017-06-03T03:31:02.282Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-03T03:53:02.656Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"nginx 配置虚拟主机","level":"1.6.1","depth":2,"next":{"title":"如何选择开源许可证？","level":"1.6.2","depth":2,"path":"License/how-to-select.md","ref":"./License/how-to-select.md","articles":[]},"previous":{"title":"其他","level":"1.6","depth":1,"ref":"","articles":[{"title":"nginx 配置虚拟主机","level":"1.6.1","depth":2,"path":"nginx/vhost.md","ref":"./nginx/vhost.md","articles":[]},{"title":"如何选择开源许可证？","level":"1.6.2","depth":2,"path":"License/how-to-select.md","ref":"./License/how-to-select.md","articles":[]},{"title":"Restful API","level":"1.6.3","depth":2,"path":"Restful-API/introduction.md","ref":"./Restful-API/introduction.md","articles":[]},{"title":"git 打标签","level":"1.6.4","depth":2,"path":"git/tag.md","ref":"./git/tag.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"nginx/vhost.md","mtime":"2017-04-07T08:29:02.242Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-03T03:53:02.656Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

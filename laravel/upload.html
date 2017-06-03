@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>分类整理 layout 布局文件 · GitBook</title>
+        <title>文件上传 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="tinker.html" />
     
-    <link rel="prev" href="postDelayed.html" />
+    
+    <link rel="prev" href="event.html" />
     
 
     </head>
@@ -114,9 +116,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="postDelayed.html">
+        <li class="chapter " data-level="1.2.1" data-path="../android/postDelayed.html">
             
-                <a href="postDelayed.html">
+                <a href="../android/postDelayed.html">
             
                     
                     循环任务
@@ -127,9 +129,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.2" data-path="layout-split.html">
+        <li class="chapter " data-level="1.2.2" data-path="../android/layout-split.html">
             
-                <a href="layout-split.html">
+                <a href="../android/layout-split.html">
             
                     
                     分类整理 layout 布局文件
@@ -230,9 +232,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../laravel/event.html">
+        <li class="chapter " data-level="1.4.1" data-path="event.html">
             
-                <a href="../laravel/event.html">
+                <a href="event.html">
             
                     
                     Laravel 的事件系统
@@ -243,9 +245,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../laravel/upload.html">
+        <li class="chapter active" data-level="1.4.2" data-path="upload.html">
             
-                <a href="../laravel/upload.html">
+                <a href="upload.html">
             
                     
                     文件上传
@@ -256,9 +258,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="../laravel/tinker.html">
+        <li class="chapter " data-level="1.4.3" data-path="tinker.html">
             
-                <a href="../laravel/tinker.html">
+                <a href="tinker.html">
             
                     
                     使用 tinker 调试
@@ -269,9 +271,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="../laravel/packages.html">
+        <li class="chapter " data-level="1.4.4" data-path="packages.html">
             
-                <a href="../laravel/packages.html">
+                <a href="packages.html">
             
                     
                     Laravel 常用的包
@@ -433,7 +435,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >分类整理 layout 布局文件</a>
+        <a href=".." >文件上传</a>
     </h1>
 </div>
 
@@ -448,24 +450,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5206;&#x7C7B;&#x6574;&#x7406;-layout-&#x5E03;&#x5C40;&#x6587;&#x4EF6;">&#x5206;&#x7C7B;&#x6574;&#x7406; layout &#x5E03;&#x5C40;&#x6587;&#x4EF6;</h1>
-<p>&#x4E00;&#x76F4;&#x4EE5;&#x6765;&#x9879;&#x76EE;&#x4E2D;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x653E;&#x5728; <code>layout</code> &#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x968F;&#x7740;&#x9879;&#x76EE;&#x8D8A;&#x505A;&#x8D8A;&#x5927;&#xFF0C;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x4E5F;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x591A;&#xFF0C;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x6574;&#x7406;&#x3002;</p>
-<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x89E3;&#x51B3;&#x65B9;&#x6848;</h2>
-<p>&#x5229;&#x7528;Gradle&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;Resource&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x4FEE;&#x6539;layout&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
-<pre><code>sourceSets {
-        main {
-            res.srcDirs = [
-                    &apos;src/main/res/layouts/home&apos;,
-                    &apos;src/main/res/layouts/main&apos;,
-                    &apos;src/main/res&apos;
-            ]
+                                <h1 id="&#x6587;&#x4EF6;&#x4E0A;&#x4F20;">&#x6587;&#x4EF6;&#x4E0A;&#x4F20;</h1>
+<p>&#x914D;&#x7F6E;&#x6587;&#x4EF6; <code>config/filesystems.php</code></p>
+<pre><code class="lang-php"><span class="hljs-string">&apos;disks&apos;</span> =&gt; [
+
+        <span class="hljs-string">&apos;local&apos;</span> =&gt; [
+            <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;local&apos;</span>,
+            <span class="hljs-string">&apos;root&apos;</span> =&gt; storage_path(<span class="hljs-string">&apos;app&apos;</span>),
+        ],
+
+        <span class="hljs-string">&apos;public&apos;</span> =&gt; [
+            <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;local&apos;</span>,
+            <span class="hljs-string">&apos;root&apos;</span> =&gt; storage_path(<span class="hljs-string">&apos;app/public&apos;</span>),
+            <span class="hljs-string">&apos;url&apos;</span> =&gt; env(<span class="hljs-string">&apos;APP_URL&apos;</span>) . <span class="hljs-string">&apos;/storage&apos;</span>,
+            <span class="hljs-string">&apos;visibility&apos;</span> =&gt; <span class="hljs-string">&apos;public&apos;</span>,
+        ],
+        <span class="hljs-comment">//&#x81EA;&#x5B9A;&#x4E49;&#x5B58;&#x50A8;&#x76EE;&#x5F55;</span>
+        <span class="hljs-string">&apos;upload&apos;</span> =&gt; [
+            <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;local&apos;</span>,
+            <span class="hljs-string">&apos;root&apos;</span> =&gt; storage_path(<span class="hljs-string">&apos;app/upload&apos;</span>),
+        ],
+    ],
+</code></pre>
+<p>&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        $file = $request-&gt;file(<span class="hljs-string">&apos;source&apos;</span>);
+
+        <span class="hljs-comment">//&#x6587;&#x4EF6;&#x662F;&#x5426;&#x4E0A;&#x4F20;&#x6210;&#x529F;</span>
+        <span class="hljs-keyword">if</span> ($file-&gt;isValid()) {
+            $originalName = $file-&gt;getClientOriginalName();<span class="hljs-comment">//&#x539F;&#x6587;&#x4EF6;&#x540D;</span>
+            $ext = $file-&gt;getClientOriginalExtension();<span class="hljs-comment">//&#x6269;&#x5C55;&#x540D;</span>
+            $type = $file-&gt;getMimeType();<span class="hljs-comment">//MimeType</span>
+            $realPath = $file-&gt;getRealPath();<span class="hljs-comment">//&#x4E34;&#x65F6;&#x51B3;&#x5B9A;&#x8DEF;&#x5F84;</span>
+            $fileName = date(<span class="hljs-string">&apos;Y-m-d-H-i-s&apos;</span>) . <span class="hljs-string">&apos;-&apos;</span> . uniqid() . $ext;
+
+            <span class="hljs-comment">//&#x4E0A;&#x4F20;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x78C1;&#x76D8;&#x4E0B;&#x9762;</span>
+            <span class="hljs-comment">//use Illuminate\Support\Facades\Storage;</span>
+            $bool = Storage::disk(<span class="hljs-string">&apos;upload&apos;</span>)-&gt;put($fileName, file_get_contents($realPath));
+            <span class="hljs-keyword">if</span> ($bool) {
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x4E0A;&#x4F20;&#x6210;&#x529F;&apos;</span>;
+            }
         }
     }
-</code></pre><p><img src="http://onru0wbs0.bkt.clouddn.com/android/2017-04-09-16-25-40.jpg" alt=""></p>
-<p><img src="http://onru0wbs0.bkt.clouddn.com/android/2017-04-09-16-27-51.jpg" alt=""></p>
-<p><a href="http://www.jianshu.com/p/c2c8461999be" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;1</a></p>
-<p><a href="http://www.jianshu.com/p/fcc831e87b3d" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;2</a></p>
-<p><a href="http://blog.csdn.net/u011156012/article/details/50575117" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;3</a></p>
+</code></pre>
 
                                 
                                 </section>
@@ -493,10 +521,14 @@
 
             
                 
-                <a href="postDelayed.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 循环任务">
+                <a href="event.html" class="navigation navigation-prev " aria-label="Previous page: Laravel 的事件系统">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="tinker.html" class="navigation navigation-next " aria-label="Next page: 使用 tinker 调试">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -505,7 +537,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"分类整理 layout 布局文件","level":"1.2.2","depth":2,"next":{"title":"Web 前端","level":"1.3","depth":1,"ref":"","articles":[{"title":"跨域请求","level":"1.3.1","depth":2,"path":"front-end/cors.md","ref":"./front-end/cors.md","articles":[]},{"title":"gulp 压缩图片","level":"1.3.2","depth":2,"path":"front-end/gulp-imagemin.md","ref":"./front-end/gulp-imagemin.md","articles":[]},{"title":"layer——优雅的web弹层组件","level":"1.3.3","depth":2,"path":"front-end/layer.md","ref":"./front-end/layer.md","articles":[]},{"title":"NPM","level":"1.3.4","depth":2,"path":"front-end/npm.md","ref":"./front-end/npm.md","articles":[]}]},"previous":{"title":"循环任务","level":"1.2.1","depth":2,"path":"android/postDelayed.md","ref":"./android/postDelayed.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/layout-split.md","mtime":"2017-06-03T03:31:02.282Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-03T03:53:02.656Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"文件上传","level":"1.4.2","depth":2,"next":{"title":"使用 tinker 调试","level":"1.4.3","depth":2,"path":"laravel/tinker.md","ref":"./laravel/tinker.md","articles":[]},"previous":{"title":"Laravel 的事件系统","level":"1.4.1","depth":2,"path":"laravel/event.md","ref":"./laravel/event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"laravel/upload.md","mtime":"2017-04-07T08:29:02.233Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-03T03:53:02.656Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

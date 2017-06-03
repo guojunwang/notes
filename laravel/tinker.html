@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>分类整理 layout 布局文件 · GitBook</title>
+        <title>使用 tinker 调试 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="packages.html" />
     
-    <link rel="prev" href="postDelayed.html" />
+    
+    <link rel="prev" href="upload.html" />
     
 
     </head>
@@ -114,9 +116,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="postDelayed.html">
+        <li class="chapter " data-level="1.2.1" data-path="../android/postDelayed.html">
             
-                <a href="postDelayed.html">
+                <a href="../android/postDelayed.html">
             
                     
                     循环任务
@@ -127,9 +129,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.2" data-path="layout-split.html">
+        <li class="chapter " data-level="1.2.2" data-path="../android/layout-split.html">
             
-                <a href="layout-split.html">
+                <a href="../android/layout-split.html">
             
                     
                     分类整理 layout 布局文件
@@ -230,9 +232,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../laravel/event.html">
+        <li class="chapter " data-level="1.4.1" data-path="event.html">
             
-                <a href="../laravel/event.html">
+                <a href="event.html">
             
                     
                     Laravel 的事件系统
@@ -243,9 +245,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../laravel/upload.html">
+        <li class="chapter " data-level="1.4.2" data-path="upload.html">
             
-                <a href="../laravel/upload.html">
+                <a href="upload.html">
             
                     
                     文件上传
@@ -256,9 +258,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="../laravel/tinker.html">
+        <li class="chapter active" data-level="1.4.3" data-path="tinker.html">
             
-                <a href="../laravel/tinker.html">
+                <a href="tinker.html">
             
                     
                     使用 tinker 调试
@@ -269,9 +271,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="../laravel/packages.html">
+        <li class="chapter " data-level="1.4.4" data-path="packages.html">
             
-                <a href="../laravel/packages.html">
+                <a href="packages.html">
             
                     
                     Laravel 常用的包
@@ -433,7 +435,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >分类整理 layout 布局文件</a>
+        <a href=".." >使用 tinker 调试</a>
     </h1>
 </div>
 
@@ -448,24 +450,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5206;&#x7C7B;&#x6574;&#x7406;-layout-&#x5E03;&#x5C40;&#x6587;&#x4EF6;">&#x5206;&#x7C7B;&#x6574;&#x7406; layout &#x5E03;&#x5C40;&#x6587;&#x4EF6;</h1>
-<p>&#x4E00;&#x76F4;&#x4EE5;&#x6765;&#x9879;&#x76EE;&#x4E2D;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x653E;&#x5728; <code>layout</code> &#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x968F;&#x7740;&#x9879;&#x76EE;&#x8D8A;&#x505A;&#x8D8A;&#x5927;&#xFF0C;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x4E5F;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x591A;&#xFF0C;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x6574;&#x7406;&#x3002;</p>
-<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x89E3;&#x51B3;&#x65B9;&#x6848;</h2>
-<p>&#x5229;&#x7528;Gradle&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;Resource&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x4FEE;&#x6539;layout&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
-<pre><code>sourceSets {
-        main {
-            res.srcDirs = [
-                    &apos;src/main/res/layouts/home&apos;,
-                    &apos;src/main/res/layouts/main&apos;,
-                    &apos;src/main/res&apos;
-            ]
-        }
-    }
-</code></pre><p><img src="http://onru0wbs0.bkt.clouddn.com/android/2017-04-09-16-25-40.jpg" alt=""></p>
-<p><img src="http://onru0wbs0.bkt.clouddn.com/android/2017-04-09-16-27-51.jpg" alt=""></p>
-<p><a href="http://www.jianshu.com/p/c2c8461999be" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;1</a></p>
-<p><a href="http://www.jianshu.com/p/fcc831e87b3d" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;2</a></p>
-<p><a href="http://blog.csdn.net/u011156012/article/details/50575117" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;3</a></p>
+                                <h1 id="&#x4F7F;&#x7528;-tinker-&#x8C03;&#x8BD5;">&#x4F7F;&#x7528; tinker &#x8C03;&#x8BD5;</h1>
+<p>Laravel artisan &#x7684; tinker &#x662F;&#x4E00;&#x4E2A; REPL (read-eval-print-loop)&#xFF0C;REPL &#x662F;&#x6307; &#x4EA4;&#x4E92;&#x5F0F;&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x8F93;&#x5165;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#x53BB;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x628A;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x76F4;&#x63A5;&#x6253;&#x5370;&#x5230;&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;&#x91CC;&#x3002;</p>
+<h2 id="&#x57FA;&#x672C;&#x4F7F;&#x7528;">&#x57FA;&#x672C;&#x4F7F;&#x7528;</h2>
+<p>&#x6253;&#x5F00; tinker</p>
+<pre><code>php artisan tinker
+</code></pre><p>&#x4F7F;&#x7528;&#x6A21;&#x578B;&#x5DE5;&#x5382;&#x6765;&#x586B;&#x5145;&#x6570;&#x636E;</p>
+<pre><code class="lang-php">factory(App\User::class, <span class="hljs-number">10</span>)-&gt;create();
+
+App\User::all();
+
+App\User::count();
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7528;&#x6237;</p>
+<pre><code class="lang-php">$user = <span class="hljs-keyword">new</span> App\User;
+$user-&gt;name = <span class="hljs-string">&quot;Wruce Bayne&quot;</span>;
+$user-&gt;email = <span class="hljs-string">&quot;iambatman@savegotham.com&quot;</span>;
+$user-&gt;save();
+</code></pre>
+<p>&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#xFF0C;&#x8981;&#x5220;&#x9664; id &#x4E3A; 1 &#x7684;&#x7528;&#x6237;&#xFF1A;</p>
+<pre><code class="lang-php">$user = App\User::find(<span class="hljs-number">1</span>);
+$user-&gt;delete();
+</code></pre>
+<h2 id="&#x67E5;&#x9605;&#x67D0;&#x4E2A;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x6CE8;&#x91CA;&#x6587;&#x6863;">&#x67E5;&#x9605;&#x67D0;&#x4E2A;&#x7C7B;/&#x65B9;&#x6CD5;&#x7684;&#x6CE8;&#x91CA;&#x6587;&#x6863;</h2>
+<p>&#x901A;&#x8FC7; tinker&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728; REPL &#x4E2D;&#x67E5;&#x770B;&#x67D0;&#x4E2A; &#x7C7B;/&#x65B9;&#x6CD5; &#x7684;&#x6CE8;&#x91CA;&#x6587;&#x6863;&#x3002;&#x4F46;&#x662F;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x53D6;&#x51B3;&#x4E8E;&#x8FD9;&#x4E2A; &#x7C7B;/&#x65B9;&#x6CD5; &#x662F;&#x5426;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#x6CE8;&#x91CA;&#x5757;&#xFF08;DocBlocks&#xFF09;&#x3002;</p>
+<pre><code>//&#x67E5;&#x9605; dd &#x7684;&#x6CE8;&#x91CA;&#x6587;&#x6863;
+doc dd
+</code></pre><h2 id="&#x67E5;&#x770B;&#x6E90;&#x7801;">&#x67E5;&#x770B;&#x6E90;&#x7801;</h2>
+<p>&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728; REPL &#x4E2D;&#x6253;&#x5370;&#x51FA;&#x67D0;&#x4E2A; &#x7C7B;/&#x65B9;&#x6CD5; &#x7684;&#x6E90;&#x4EE3;&#x7801;</p>
+<pre><code>//&#x67E5;&#x770B; dd &#x7684;&#x6E90;&#x7801;
+show dd
+</code></pre><p><a href="http://laravelacademy.org/post/4935.html" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;</a></p>
 
                                 
                                 </section>
@@ -493,10 +508,14 @@
 
             
                 
-                <a href="postDelayed.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 循环任务">
+                <a href="upload.html" class="navigation navigation-prev " aria-label="Previous page: 文件上传">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="packages.html" class="navigation navigation-next " aria-label="Next page: Laravel 常用的包">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -505,7 +524,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"分类整理 layout 布局文件","level":"1.2.2","depth":2,"next":{"title":"Web 前端","level":"1.3","depth":1,"ref":"","articles":[{"title":"跨域请求","level":"1.3.1","depth":2,"path":"front-end/cors.md","ref":"./front-end/cors.md","articles":[]},{"title":"gulp 压缩图片","level":"1.3.2","depth":2,"path":"front-end/gulp-imagemin.md","ref":"./front-end/gulp-imagemin.md","articles":[]},{"title":"layer——优雅的web弹层组件","level":"1.3.3","depth":2,"path":"front-end/layer.md","ref":"./front-end/layer.md","articles":[]},{"title":"NPM","level":"1.3.4","depth":2,"path":"front-end/npm.md","ref":"./front-end/npm.md","articles":[]}]},"previous":{"title":"循环任务","level":"1.2.1","depth":2,"path":"android/postDelayed.md","ref":"./android/postDelayed.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/layout-split.md","mtime":"2017-06-03T03:31:02.282Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-03T03:53:02.656Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用 tinker 调试","level":"1.4.3","depth":2,"next":{"title":"Laravel 常用的包","level":"1.4.4","depth":2,"path":"laravel/packages.md","ref":"./laravel/packages.md","articles":[]},"previous":{"title":"文件上传","level":"1.4.2","depth":2,"path":"laravel/upload.md","ref":"./laravel/upload.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"laravel/tinker.md","mtime":"2017-04-07T08:29:02.226Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-03T03:53:02.656Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

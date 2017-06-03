@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>分类整理 layout 布局文件 · GitBook</title>
+        <title>layer——优雅的web弹层组件 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="npm.html" />
     
-    <link rel="prev" href="postDelayed.html" />
+    
+    <link rel="prev" href="gulp-imagemin.html" />
     
 
     </head>
@@ -114,9 +116,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="postDelayed.html">
+        <li class="chapter " data-level="1.2.1" data-path="../android/postDelayed.html">
             
-                <a href="postDelayed.html">
+                <a href="../android/postDelayed.html">
             
                     
                     循环任务
@@ -127,9 +129,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.2" data-path="layout-split.html">
+        <li class="chapter " data-level="1.2.2" data-path="../android/layout-split.html">
             
-                <a href="layout-split.html">
+                <a href="../android/layout-split.html">
             
                     
                     分类整理 layout 布局文件
@@ -159,9 +161,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../front-end/cors.html">
+        <li class="chapter " data-level="1.3.1" data-path="cors.html">
             
-                <a href="../front-end/cors.html">
+                <a href="cors.html">
             
                     
                     跨域请求
@@ -172,9 +174,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../front-end/gulp-imagemin.html">
+        <li class="chapter " data-level="1.3.2" data-path="gulp-imagemin.html">
             
-                <a href="../front-end/gulp-imagemin.html">
+                <a href="gulp-imagemin.html">
             
                     
                     gulp 压缩图片
@@ -185,9 +187,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../front-end/layer.html">
+        <li class="chapter active" data-level="1.3.3" data-path="layer.html">
             
-                <a href="../front-end/layer.html">
+                <a href="layer.html">
             
                     
                     layer——优雅的web弹层组件
@@ -198,9 +200,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="../front-end/npm.html">
+        <li class="chapter " data-level="1.3.4" data-path="npm.html">
             
-                <a href="../front-end/npm.html">
+                <a href="npm.html">
             
                     
                     NPM
@@ -433,7 +435,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >分类整理 layout 布局文件</a>
+        <a href=".." >layer——优雅的web弹层组件</a>
     </h1>
 </div>
 
@@ -448,24 +450,67 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5206;&#x7C7B;&#x6574;&#x7406;-layout-&#x5E03;&#x5C40;&#x6587;&#x4EF6;">&#x5206;&#x7C7B;&#x6574;&#x7406; layout &#x5E03;&#x5C40;&#x6587;&#x4EF6;</h1>
-<p>&#x4E00;&#x76F4;&#x4EE5;&#x6765;&#x9879;&#x76EE;&#x4E2D;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x653E;&#x5728; <code>layout</code> &#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x968F;&#x7740;&#x9879;&#x76EE;&#x8D8A;&#x505A;&#x8D8A;&#x5927;&#xFF0C;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x4E5F;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x591A;&#xFF0C;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x6574;&#x7406;&#x3002;</p>
-<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x89E3;&#x51B3;&#x65B9;&#x6848;</h2>
-<p>&#x5229;&#x7528;Gradle&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;Resource&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x4FEE;&#x6539;layout&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
-<pre><code>sourceSets {
-        main {
-            res.srcDirs = [
-                    &apos;src/main/res/layouts/home&apos;,
-                    &apos;src/main/res/layouts/main&apos;,
-                    &apos;src/main/res&apos;
-            ]
-        }
-    }
-</code></pre><p><img src="http://onru0wbs0.bkt.clouddn.com/android/2017-04-09-16-25-40.jpg" alt=""></p>
-<p><img src="http://onru0wbs0.bkt.clouddn.com/android/2017-04-09-16-27-51.jpg" alt=""></p>
-<p><a href="http://www.jianshu.com/p/c2c8461999be" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;1</a></p>
-<p><a href="http://www.jianshu.com/p/fcc831e87b3d" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;2</a></p>
-<p><a href="http://blog.csdn.net/u011156012/article/details/50575117" target="_blank">&#x53C2;&#x8003;&#x94FE;&#x63A5;3</a></p>
+                                <h1 id="layer&#x2014;&#x2014;&#x4F18;&#x96C5;&#x7684;web&#x5F39;&#x5C42;&#x7EC4;&#x4EF6;">layer&#x2014;&#x2014;&#x4F18;&#x96C5;&#x7684;web&#x5F39;&#x5C42;&#x7EC4;&#x4EF6;</h1>
+<p>&#x5728;web&#x5E94;&#x7528;&#x4EA4;&#x4E92;&#x4F53;&#x9A8C;&#x4E2D;&#xFF0C;&#x5F39;&#x51FA;&#x6846;&#x662F;&#x4E00;&#x4E2A;&#x5341;&#x5206;&#x91CD;&#x8981;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x539F;&#x751F;&#x7684;alert&#x5374;&#x662F;&#x8FD9;&#x822C;&#x6A21;&#x6837;</p>
+<p><img src="http://oncsg1snd.bkt.clouddn.com/images/20160928/alert.jpg" alt=""></p>
+<p>&#x8FD9;&#x6A21;&#x6837;&#x5728;&#x73B0;&#x4EE3;&#x5316;&#x7684;web&#x9875;&#x9762;&#x4E2D;&#x5B9E;&#x5728;&#x4E0D;&#x5FCD;&#x76F4;&#x89C6;&#xFF0C;&#x4ECA;&#x5929;&#x7ED9;&#x5927;&#x5BB6;&#x63A8;&#x8350;&#x4E00;&#x4E2A;&#x4F18;&#x96C5;&#x7684;web&#x5F39;&#x5C42;&#x7684;&#x7EC4;&#x4EF6;&#x2014;&#x2014;layer&#x3002;&#x5148;&#x4E00;&#x7779;&#x4E3A;&#x5FEB;</p>
+<p><img src="http://oncsg1snd.bkt.clouddn.com/images/20160928/molv.jpg" alt="&#x58A8;&#x7EFF;&#x98CE;&#x683C;"></p>
+<p>&#x6211;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x7528;&#x6CD5;&#x548C;&#x6211;&#x7684;&#x5C01;&#x88C5; <code>dialog.js</code></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> dialog = {
+    <span class="hljs-comment">//&#x9519;&#x8BEF;&#x5F39;&#x51FA;&#x5C42;</span>
+    error: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">message</span>) </span>{
+        layer.open({
+            content: message,
+            icon: <span class="hljs-number">2</span>,
+            title: <span class="hljs-string">&apos;&#x9519;&#x8BEF;&#x63D0;&#x793A;&apos;</span>,
+        });
+    },
+
+    <span class="hljs-comment">//&#x6210;&#x529F;&#x5F39;&#x51FA;&#x5C42;</span>
+    success: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">message, url</span>) </span>{
+        layer.open({
+            content: message,
+            icon: <span class="hljs-number">1</span>,
+            yes: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                location.href = url;
+            }
+        });
+    },
+
+    <span class="hljs-comment">//&#x786E;&#x8BA4;&#x5F39;&#x51FA;&#x6846;</span>
+    confirm: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">message, url</span>) </span>{
+        layer.open({
+            content: message,
+            icon: <span class="hljs-number">3</span>,
+            btn: [<span class="hljs-string">&apos;&#x662F;&apos;</span>, <span class="hljs-string">&apos;&#x5426;&apos;</span>],
+            yes: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                location.href = url;
+            },
+        });
+    },
+
+    <span class="hljs-comment">//&#x65E0;&#x9700;&#x8DF3;&#x8F6C;&#x5230;&#x6307;&#x5B9A;&#x9875;&#x9762;&#x7684;&#x786E;&#x8BA4;&#x5F39;&#x51FA;&#x6846;</span>
+    toConfirm: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">message</span>) </span>{
+        layer.open({
+            content: message,
+            icon: <span class="hljs-number">3</span>,
+            btn: [<span class="hljs-string">&apos;&#x786E;&#x5B9A;&apos;</span>],
+        });
+    },
+}
+</code></pre>
+<p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#xFF0C;&#x5148;&#x5F15;&#x5165;js&#x6587;&#x4EF6;&#xFF0C;&#xFF08;&#x6CE8;&#x610F;&#xFF0C;layer&#x4F9D;&#x8D56;jquery&#xFF09;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.1.1.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/layer/layer.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/dialog.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>&#x63A5;&#x7740;&#x5728;js&#x4EE3;&#x7801;&#x4E2D;&#x8C03;&#x7528;&#xFF0C;</p>
+<pre><code class="lang-javascript">dialog.error(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF01;&quot;</span>);
+dialog.toConfirm(<span class="hljs-string">&quot;&#x786E;&#x5B9A;&#x5220;&#x9664;&#xFF1F;&quot;</span>);
+</code></pre>
+<p><img src="http://oncsg1snd.bkt.clouddn.com/images/20160928/error.jpg" alt="">
+<img src="http://oncsg1snd.bkt.clouddn.com/images/20160928/confirm.jpg" alt=""></p>
+<p>&#x8BE6;&#x7EC6;&#x7684;&#x4ECB;&#x7ECD;&#x548C;&#x6587;&#x6863;&#x53C2;&#x89C1; <a href="http://layer.layui.com/" target="_blank">&#x5B98;&#x7F51;</a>&#xFF0C;layer&#x2014;&#x2014;&#x5E0C;&#x671B;&#x5BF9;&#x4F60;&#x6709;&#x5E2E;&#x52A9;&#x3002;</p>
 
                                 
                                 </section>
@@ -493,10 +538,14 @@
 
             
                 
-                <a href="postDelayed.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 循环任务">
+                <a href="gulp-imagemin.html" class="navigation navigation-prev " aria-label="Previous page: gulp 压缩图片">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="npm.html" class="navigation navigation-next " aria-label="Next page: NPM">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -505,7 +554,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"分类整理 layout 布局文件","level":"1.2.2","depth":2,"next":{"title":"Web 前端","level":"1.3","depth":1,"ref":"","articles":[{"title":"跨域请求","level":"1.3.1","depth":2,"path":"front-end/cors.md","ref":"./front-end/cors.md","articles":[]},{"title":"gulp 压缩图片","level":"1.3.2","depth":2,"path":"front-end/gulp-imagemin.md","ref":"./front-end/gulp-imagemin.md","articles":[]},{"title":"layer——优雅的web弹层组件","level":"1.3.3","depth":2,"path":"front-end/layer.md","ref":"./front-end/layer.md","articles":[]},{"title":"NPM","level":"1.3.4","depth":2,"path":"front-end/npm.md","ref":"./front-end/npm.md","articles":[]}]},"previous":{"title":"循环任务","level":"1.2.1","depth":2,"path":"android/postDelayed.md","ref":"./android/postDelayed.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/layout-split.md","mtime":"2017-06-03T03:31:02.282Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-03T03:53:02.656Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"layer——优雅的web弹层组件","level":"1.3.3","depth":2,"next":{"title":"NPM","level":"1.3.4","depth":2,"path":"front-end/npm.md","ref":"./front-end/npm.md","articles":[]},"previous":{"title":"gulp 压缩图片","level":"1.3.2","depth":2,"path":"front-end/gulp-imagemin.md","ref":"./front-end/gulp-imagemin.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"front-end/layer.md","mtime":"2017-04-07T08:29:02.202Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-03T03:53:02.656Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
