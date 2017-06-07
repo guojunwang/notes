@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>文件上传 · GitBook</title>
+        <title>nginx SSL 配置 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tinker.html" />
+    <link rel="next" href="../License/how-to-select.html" />
     
     
-    <link rel="prev" href="event.html" />
+    <link rel="prev" href="vhost.html" />
     
 
     </head>
@@ -232,9 +232,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="event.html">
+        <li class="chapter " data-level="1.4.1" data-path="../laravel/event.html">
             
-                <a href="event.html">
+                <a href="../laravel/event.html">
             
                     
                     Laravel 的事件系统
@@ -245,9 +245,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="upload.html">
+        <li class="chapter " data-level="1.4.2" data-path="../laravel/upload.html">
             
-                <a href="upload.html">
+                <a href="../laravel/upload.html">
             
                     
                     文件上传
@@ -258,9 +258,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="tinker.html">
+        <li class="chapter " data-level="1.4.3" data-path="../laravel/tinker.html">
             
-                <a href="tinker.html">
+                <a href="../laravel/tinker.html">
             
                     
                     使用 tinker 调试
@@ -271,9 +271,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="packages.html">
+        <li class="chapter " data-level="1.4.4" data-path="../laravel/packages.html">
             
-                <a href="packages.html">
+                <a href="../laravel/packages.html">
             
                     
                     Laravel 常用的包
@@ -348,9 +348,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../nginx/vhost.html">
+        <li class="chapter " data-level="1.6.1" data-path="vhost.html">
             
-                <a href="../nginx/vhost.html">
+                <a href="vhost.html">
             
                     
                     nginx 配置虚拟主机
@@ -361,9 +361,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../nginx/ssl.html">
+        <li class="chapter active" data-level="1.6.2" data-path="ssl.html">
             
-                <a href="../nginx/ssl.html">
+                <a href="ssl.html">
             
                     
                     nginx SSL 配置
@@ -448,7 +448,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >文件上传</a>
+        <a href=".." >nginx SSL 配置</a>
     </h1>
 </div>
 
@@ -463,50 +463,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x6587;&#x4EF6;&#x4E0A;&#x4F20;">&#x6587;&#x4EF6;&#x4E0A;&#x4F20;</h1>
-<p>&#x914D;&#x7F6E;&#x6587;&#x4EF6; <code>config/filesystems.php</code></p>
-<pre><code class="lang-php"><span class="hljs-string">&apos;disks&apos;</span> =&gt; [
-
-        <span class="hljs-string">&apos;local&apos;</span> =&gt; [
-            <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;local&apos;</span>,
-            <span class="hljs-string">&apos;root&apos;</span> =&gt; storage_path(<span class="hljs-string">&apos;app&apos;</span>),
-        ],
-
-        <span class="hljs-string">&apos;public&apos;</span> =&gt; [
-            <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;local&apos;</span>,
-            <span class="hljs-string">&apos;root&apos;</span> =&gt; storage_path(<span class="hljs-string">&apos;app/public&apos;</span>),
-            <span class="hljs-string">&apos;url&apos;</span> =&gt; env(<span class="hljs-string">&apos;APP_URL&apos;</span>) . <span class="hljs-string">&apos;/storage&apos;</span>,
-            <span class="hljs-string">&apos;visibility&apos;</span> =&gt; <span class="hljs-string">&apos;public&apos;</span>,
-        ],
-        <span class="hljs-comment">//&#x81EA;&#x5B9A;&#x4E49;&#x5B58;&#x50A8;&#x76EE;&#x5F55;</span>
-        <span class="hljs-string">&apos;upload&apos;</span> =&gt; [
-            <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;local&apos;</span>,
-            <span class="hljs-string">&apos;root&apos;</span> =&gt; storage_path(<span class="hljs-string">&apos;app/upload&apos;</span>),
-        ],
-    ],
-</code></pre>
-<p>&#x793A;&#x4F8B;&#xFF1A;</p>
-<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload</span><span class="hljs-params">(Request $request)</span>
-    </span>{
-        $file = $request-&gt;file(<span class="hljs-string">&apos;source&apos;</span>);
-
-        <span class="hljs-comment">//&#x6587;&#x4EF6;&#x662F;&#x5426;&#x4E0A;&#x4F20;&#x6210;&#x529F;</span>
-        <span class="hljs-keyword">if</span> ($file-&gt;isValid()) {
-            $originalName = $file-&gt;getClientOriginalName();<span class="hljs-comment">//&#x539F;&#x6587;&#x4EF6;&#x540D;</span>
-            $ext = $file-&gt;getClientOriginalExtension();<span class="hljs-comment">//&#x6269;&#x5C55;&#x540D;</span>
-            $type = $file-&gt;getMimeType();<span class="hljs-comment">//MimeType</span>
-            $realPath = $file-&gt;getRealPath();<span class="hljs-comment">//&#x4E34;&#x65F6;&#x51B3;&#x5B9A;&#x8DEF;&#x5F84;</span>
-            $fileName = date(<span class="hljs-string">&apos;Y-m-d-H-i-s&apos;</span>) . <span class="hljs-string">&apos;-&apos;</span> . uniqid() . $ext;
-
-            <span class="hljs-comment">//&#x4E0A;&#x4F20;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x78C1;&#x76D8;&#x4E0B;&#x9762;</span>
-            <span class="hljs-comment">//use Illuminate\Support\Facades\Storage;</span>
-            $bool = Storage::disk(<span class="hljs-string">&apos;upload&apos;</span>)-&gt;put($fileName, file_get_contents($realPath));
-            <span class="hljs-keyword">if</span> ($bool) {
-                <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x4E0A;&#x4F20;&#x6210;&#x529F;&apos;</span>;
-            }
-        }
-    }
-</code></pre>
+                                <h1 id="nginx-ssl-&#x914D;&#x7F6E;">Nginx SSL &#x914D;&#x7F6E;</h1>
+<p><a href="https://www.laravist.com/blog/post/nginx-ssl-configuration" target="_blank">&#x53C2;&#x89C1; Laravist</a> </p>
 
                                 
                                 </section>
@@ -534,12 +492,12 @@
 
             
                 
-                <a href="event.html" class="navigation navigation-prev " aria-label="Previous page: Laravel 的事件系统">
+                <a href="vhost.html" class="navigation navigation-prev " aria-label="Previous page: nginx 配置虚拟主机">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tinker.html" class="navigation navigation-next " aria-label="Next page: 使用 tinker 调试">
+                <a href="../License/how-to-select.html" class="navigation navigation-next " aria-label="Next page: 如何选择开源许可证？">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -550,7 +508,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文件上传","level":"1.4.2","depth":2,"next":{"title":"使用 tinker 调试","level":"1.4.3","depth":2,"path":"laravel/tinker.md","ref":"./laravel/tinker.md","articles":[]},"previous":{"title":"Laravel 的事件系统","level":"1.4.1","depth":2,"path":"laravel/event.md","ref":"./laravel/event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"laravel/upload.md","mtime":"2017-06-07T14:46:18.888Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-07T14:51:47.830Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"nginx SSL 配置","level":"1.6.2","depth":2,"next":{"title":"如何选择开源许可证？","level":"1.6.3","depth":2,"path":"License/how-to-select.md","ref":"./License/how-to-select.md","articles":[]},"previous":{"title":"nginx 配置虚拟主机","level":"1.6.1","depth":2,"path":"nginx/vhost.md","ref":"./nginx/vhost.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"nginx/ssl.md","mtime":"2017-06-07T14:50:01.602Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-07T14:51:47.830Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
