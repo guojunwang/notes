@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>nginx 配置虚拟主机 · GitBook</title>
+        <title>Android 的拖放机制 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ssl.html" />
     
+    <link rel="prev" href="layout-split.html" />
     
 
     </head>
@@ -114,9 +114,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../android/postDelayed.html">
+        <li class="chapter " data-level="1.2.1" data-path="postDelayed.html">
             
-                <a href="../android/postDelayed.html">
+                <a href="postDelayed.html">
             
                     
                     循环任务
@@ -127,9 +127,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../android/layout-split.html">
+        <li class="chapter " data-level="1.2.2" data-path="layout-split.html">
             
-                <a href="../android/layout-split.html">
+                <a href="layout-split.html">
             
                     
                     分类整理 layout 布局文件
@@ -140,9 +140,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../android/drag.html">
+        <li class="chapter active" data-level="1.2.3" data-path="drag.html">
             
-                <a href="../android/drag.html">
+                <a href="drag.html">
             
                     
                     Android 的拖放机制
@@ -359,9 +359,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.6.1" data-path="vhost.html">
+        <li class="chapter " data-level="1.6.1" data-path="../nginx/vhost.html">
             
-                <a href="vhost.html">
+                <a href="../nginx/vhost.html">
             
                     
                     nginx 配置虚拟主机
@@ -372,9 +372,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="ssl.html">
+        <li class="chapter " data-level="1.6.2" data-path="../nginx/ssl.html">
             
-                <a href="ssl.html">
+                <a href="../nginx/ssl.html">
             
                     
                     nginx SSL 配置
@@ -459,7 +459,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >nginx 配置虚拟主机</a>
+        <a href=".." >Android 的拖放机制</a>
     </h1>
 </div>
 
@@ -474,64 +474,91 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="nginx-&#x914D;&#x7F6E;&#x865A;&#x62DF;&#x4E3B;&#x673A;">nginx &#x914D;&#x7F6E;&#x865A;&#x62DF;&#x4E3B;&#x673A;</h1>
-<p><code>nginx</code> &#x914D;&#x7F6E;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x5341;&#x5206;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x6DFB;&#x52A0; <code>server</code> ,&#x4FEE;&#x6539; <code>server_name</code> &#x3001;<code>root</code> &#x5373;&#x53EF;&#x3002;</p>
-<pre><code>server {
-    listen 80;
-    server_name wordpress.dev;
-    access_log /data/wwwlogs/access_nginx.log combined;
-    root /data/www/wordpress;
-    index index.html index.htm index.php;
-    location /nginx_status {
-        stub_status on;
-        access_log off;
-        allow 127.0.0.1;
-        deny all;
-        }
-    location ~ [^/]\.php(/|$) {
-        #fastcgi_pass remote_php_ip:9000;
-        fastcgi_pass unix:/dev/shm/php-cgi.sock;
-        fastcgi_index index.php;
-        include fastcgi.conf;
-        }
-    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|ico)$ {
-        expires 30d;
-        access_log off;
-        }
-    location ~ .*\.(js|css)?$ {
-        expires 7d;
-        access_log off;
-        }
+                                <h1 id="android-&#x7684;&#x62D6;&#x653E;&#x673A;&#x5236;">Android &#x7684;&#x62D6;&#x653E;&#x673A;&#x5236;</h1>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">View</span>.<span class="hljs-title">OnDragListener</span>, <span class="hljs-title">View</span>.<span class="hljs-title">OnLongClickListener</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String TAG = <span class="hljs-string">&quot;debug&quot;</span>;
+
+    <span class="hljs-meta">@InjectView</span>(R.id.img)
+    ImageView img;
+    <span class="hljs-meta">@InjectView</span>(R.id.uninstall)
+    TextView uninstall;
+    <span class="hljs-meta">@InjectView</span>(R.id.start)
+    TextView start;
+    <span class="hljs-meta">@InjectView</span>(R.id.share)
+    TextView share;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.inject(<span class="hljs-keyword">this</span>);
+        img.setOnDragListener(<span class="hljs-keyword">this</span>);
+        img.setOnLongClickListener(<span class="hljs-keyword">this</span>);
+
+        uninstall.setOnDragListener(<span class="hljs-keyword">this</span>);
+        start.setOnDragListener(<span class="hljs-keyword">this</span>);
+        share.setOnDragListener(<span class="hljs-keyword">this</span>);
     }
-</code></pre><p>&#x9ED8;&#x8BA4; <code>nginx.conf</code></p>
-<pre><code>server {
-    listen 80;
-    server_name _;
-    access_log /data/wwwlogs/access_nginx.log combined;
-    root /data/wwwroot/default;
-    index index.html index.htm index.php;
-    location /nginx_status {
-        stub_status on;
-        access_log off;
-        allow 127.0.0.1;
-        deny all;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onDrag</span><span class="hljs-params">(View v, DragEvent event)</span> </span>{
+        <span class="hljs-keyword">boolean</span> result = <span class="hljs-keyword">true</span>;
+
+        <span class="hljs-keyword">int</span> action = event.getAction();
+
+        <span class="hljs-keyword">switch</span> (action) {
+            <span class="hljs-keyword">case</span> DragEvent.ACTION_DRAG_STARTED:
+                <span class="hljs-keyword">if</span> (v.getId() == R.id.img) {
+                    Log.i(TAG, <span class="hljs-string">&quot;onDrag: &#x5F00;&#x59CB;&#x62D6;&#x62FD;&quot;</span>);
+                }
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> DragEvent.ACTION_DRAG_ENTERED:
+                <span class="hljs-keyword">if</span> (v.getId() == R.id.start) {
+                    Log.i(TAG, <span class="hljs-string">&quot;onDrag: &#x8FDB;&#x5165;&#x542F;&#x52A8;&#x533A;&quot;</span>);
+                }
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> DragEvent.ACTION_DRAG_EXITED:
+                <span class="hljs-keyword">if</span> (v.getId() == R.id.start) {
+                    Log.i(TAG, <span class="hljs-string">&quot;onDrag: &#x79BB;&#x5F00;&#x542F;&#x52A8;&#x533A;&quot;</span>);
+                }
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> DragEvent.ACTION_DRAG_LOCATION:
+                <span class="hljs-keyword">if</span> (v.getId() == R.id.start) {
+                    Log.i(TAG, <span class="hljs-string">&quot;onDrag: &#x4ECD;&#x5728;&#x542F;&#x52A8;&#x533A;&quot;</span>);
+                }
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> DragEvent.ACTION_DROP:
+                <span class="hljs-keyword">if</span> (v.getId() == R.id.start) {
+                    Log.i(TAG, <span class="hljs-string">&quot;onDrag: &#x542F;&#x52A8;&#x5B83;&quot;</span>);
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (v.getId() == R.id.uninstall) {
+                    Log.i(TAG, <span class="hljs-string">&quot;onDrag: &#x5378;&#x8F7D;&#x5B83;&quot;</span>);
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (v.getId() == R.id.share) {
+                    Log.i(TAG, <span class="hljs-string">&quot;onDrag: &#x5206;&#x4EAB;&#x5B83;&quot;</span>);
+                }
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> DragEvent.ACTION_DRAG_ENDED:
+                Log.i(TAG, <span class="hljs-string">&quot;onDrag: &#x62D6;&#x62FD;&#x7ED3;&#x675F;&#xFF0C;&#x5728;drop&#x4E8B;&#x4EF6;&#x4E4B;&#x540E;&#x53D1;&#x751F;&quot;</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">default</span>:
+                result=<span class="hljs-keyword">false</span>;
+                <span class="hljs-keyword">break</span>;
         }
-    location ~ [^/]\.php(/|$) {
-        #fastcgi_pass remote_php_ip:9000;
-        fastcgi_pass unix:/dev/shm/php-cgi.sock;
-        fastcgi_index index.php;
-        include fastcgi.conf;
-        }
-    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|ico)$ {
-        expires 30d;
-        access_log off;
-        }
-    location ~ .*\.(js|css)?$ {
-        expires 7d;
-        access_log off;
-        }
+
+        <span class="hljs-keyword">return</span> result;
     }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onLongClick</span><span class="hljs-params">(View v)</span> </span>{
+        View.DragShadowBuilder buider = <span class="hljs-keyword">new</span> View.DragShadowBuilder(v);
+        v.startDrag(<span class="hljs-keyword">null</span>, buider, <span class="hljs-keyword">null</span>, <span class="hljs-number">0</span>);
+<span class="hljs-comment">//        v.startDragAndDrop(null,buider,null,0);</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}
 </code></pre>
+<p><a href="http://www.jianshu.com/p/1f77378665e3" target="_blank">http://www.jianshu.com/p/1f77378665e3</a></p>
+
                                 
                                 </section>
                             
@@ -558,10 +585,10 @@
 
             
                 
-                
-                <a href="ssl.html" class="navigation navigation-next navigation-unique" aria-label="Next page: nginx SSL 配置">
-                    <i class="fa fa-angle-right"></i>
+                <a href="layout-split.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 分类整理 layout 布局文件">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -570,7 +597,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"nginx 配置虚拟主机","level":"1.6.1","depth":2,"next":{"title":"nginx SSL 配置","level":"1.6.2","depth":2,"path":"nginx/ssl.md","ref":"./nginx/ssl.md","articles":[]},"previous":{"title":"其他","level":"1.6","depth":1,"ref":"","articles":[{"title":"nginx 配置虚拟主机","level":"1.6.1","depth":2,"path":"nginx/vhost.md","ref":"./nginx/vhost.md","articles":[]},{"title":"nginx SSL 配置","level":"1.6.2","depth":2,"path":"nginx/ssl.md","ref":"./nginx/ssl.md","articles":[]},{"title":"如何选择开源许可证？","level":"1.6.3","depth":2,"path":"License/how-to-select.md","ref":"./License/how-to-select.md","articles":[]},{"title":"Restful API","level":"1.6.4","depth":2,"path":"Restful-API/introduction.md","ref":"./Restful-API/introduction.md","articles":[]},{"title":"git 打标签","level":"1.6.5","depth":2,"path":"git/tag.md","ref":"./git/tag.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"nginx/vhost.md","mtime":"2017-04-07T08:29:02.242Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-09T08:50:16.626Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Android 的拖放机制","level":"1.2.3","depth":2,"next":{"title":"Web 前端","level":"1.3","depth":1,"ref":"","articles":[{"title":"跨域请求","level":"1.3.1","depth":2,"path":"front-end/cors.md","ref":"./front-end/cors.md","articles":[]},{"title":"gulp 压缩图片","level":"1.3.2","depth":2,"path":"front-end/gulp-imagemin.md","ref":"./front-end/gulp-imagemin.md","articles":[]},{"title":"layer——优雅的web弹层组件","level":"1.3.3","depth":2,"path":"front-end/layer.md","ref":"./front-end/layer.md","articles":[]},{"title":"NPM","level":"1.3.4","depth":2,"path":"front-end/npm.md","ref":"./front-end/npm.md","articles":[]}]},"previous":{"title":"分类整理 layout 布局文件","level":"1.2.2","depth":2,"path":"android/layout-split.md","ref":"./android/layout-split.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/drag.md","mtime":"2017-06-09T08:48:43.563Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-09T08:50:16.626Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
