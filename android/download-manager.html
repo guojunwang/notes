@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Laravel 的事件系统 · GitBook</title>
+        <title>使用 DownloadManager 下载 App · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="upload.html" />
     
+    <link rel="prev" href="crash-report.html" />
     
 
     </head>
@@ -114,9 +114,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../android/postDelayed.html">
+        <li class="chapter " data-level="1.2.1" data-path="postDelayed.html">
             
-                <a href="../android/postDelayed.html">
+                <a href="postDelayed.html">
             
                     
                     循环任务
@@ -127,9 +127,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../android/layout-split.html">
+        <li class="chapter " data-level="1.2.2" data-path="layout-split.html">
             
-                <a href="../android/layout-split.html">
+                <a href="layout-split.html">
             
                     
                     分类整理 layout 布局文件
@@ -140,9 +140,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../android/drag.html">
+        <li class="chapter " data-level="1.2.3" data-path="drag.html">
             
-                <a href="../android/drag.html">
+                <a href="drag.html">
             
                     
                     Android 的拖放机制
@@ -153,9 +153,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../android/crash-report.html">
+        <li class="chapter " data-level="1.2.4" data-path="crash-report.html">
             
-                <a href="../android/crash-report.html">
+                <a href="crash-report.html">
             
                     
                     集成腾讯Bugly服务
@@ -166,9 +166,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../android/download-manager.html">
+        <li class="chapter active" data-level="1.2.5" data-path="download-manager.html">
             
-                <a href="../android/download-manager.html">
+                <a href="download-manager.html">
             
                     
                     使用 DownloadManager 下载 App
@@ -269,9 +269,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="event.html">
+        <li class="chapter " data-level="1.4.1" data-path="../laravel/event.html">
             
-                <a href="event.html">
+                <a href="../laravel/event.html">
             
                     
                     Laravel 的事件系统
@@ -282,9 +282,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="upload.html">
+        <li class="chapter " data-level="1.4.2" data-path="../laravel/upload.html">
             
-                <a href="upload.html">
+                <a href="../laravel/upload.html">
             
                     
                     文件上传
@@ -295,9 +295,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="tinker.html">
+        <li class="chapter " data-level="1.4.3" data-path="../laravel/tinker.html">
             
-                <a href="tinker.html">
+                <a href="../laravel/tinker.html">
             
                     
                     使用 tinker 调试
@@ -308,9 +308,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="packages.html">
+        <li class="chapter " data-level="1.4.4" data-path="../laravel/packages.html">
             
-                <a href="packages.html">
+                <a href="../laravel/packages.html">
             
                     
                     Laravel 常用的包
@@ -485,7 +485,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Laravel 的事件系统</a>
+        <a href=".." >使用 DownloadManager 下载 App</a>
     </h1>
 </div>
 
@@ -500,48 +500,78 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="laravel-&#x7684;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;">Laravel &#x7684;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;</h1>
-<ol>
-<li><p>&#x5728; <code>App\Providers\EventServiceProvider</code> &#x6DFB;&#x52A0;</p>
-<pre><code class="lang-php"><span class="hljs-keyword">protected</span> $listen = [
-     <span class="hljs-string">&apos;App\Events\BlogView&apos;</span> =&gt; [
-         <span class="hljs-string">&apos;App\Listeners\BlogViewListener&apos;</span>,
-     ],
- ];
-</code></pre>
-</li>
-<li><p>&#x6267;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;</p>
-<pre><code>php artisan event:generate
-</code></pre><p>&#x5728; <code>App\Events</code> &#x548C; <code>App\Listeners</code> &#x4F1A;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;</p>
-</li>
-<li><p>&#x4E8B;&#x4EF6; BlogView</p>
-<pre><code class="lang-php"> <span class="hljs-keyword">public</span> $post_id;
+                                <h1 id="&#x4F7F;&#x7528;-downloadmanager-&#x4E0B;&#x8F7D;-app">&#x4F7F;&#x7528; DownloadManager &#x4E0B;&#x8F7D; App</h1>
+<p><code>MainActivity</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startDownload</span><span class="hljs-params">(View view)</span> </span>{
+        <span class="hljs-keyword">new</span> Thread() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+                downloadApk(<span class="hljs-string">&quot;http://192.168.0.2:8080/app-debug.apk&quot;</span>);
+            }
+        }.start();
+    }
 
- <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($post_id)</span>
- </span>{
-     $this-&gt;post_id = $post_id;
- }
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">downloadApk</span><span class="hljs-params">(String url)</span> </span>{
+        Uri uri = Uri.parse(url);
+        DownloadManager.Request request = <span class="hljs-keyword">new</span> DownloadManager.Request(uri);
+<span class="hljs-comment">//        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);</span>
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+
+        request.setDestinationInExternalPublicDir(<span class="hljs-string">&quot;demo&quot;</span>, <span class="hljs-string">&quot;demo.apk&quot;</span>);
+
+        request.setTitle(<span class="hljs-string">&quot;Android.apk&quot;</span>);<span class="hljs-comment">//&#x901A;&#x77E5;&#x6807;&#x9898;</span>
+        request.setDescription(<span class="hljs-string">&quot;&#x4E0B;&#x8F7D;&#x5B8C;&#x540E;&#x8BF7;&#x70B9;&#x51FB;&#x6253;&#x5F00;&quot;</span>);
+        request.setMimeType(<span class="hljs-string">&quot;application/vnd.android.package-archive&quot;</span>);
+
+        DownloadManager dm = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+        <span class="hljs-keyword">long</span> downloadId = dm.enqueue(request);
+    }
 </code></pre>
-</li>
-<li>&#x76D1;&#x542C;&#x5668; BlogViewListener<pre><code class="lang-php"> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">(BlogView $event)</span>
- </span>{
-     $post_id = $event-&gt;post_id;
-     logger(<span class="hljs-string">&apos;&#x6587;&#x7AE0;-&apos;</span>.$post_id . <span class="hljs-string">&quot;&#x88AB;&#x67E5;&#x770B;&quot;</span>);
-     <span class="hljs-comment">//&#x53EF;&#x4EE5;&#x7EDF;&#x8BA1;&#x6587;&#x7AE0;&#x9605;&#x8BFB;&#x6B21;&#x6570;(&#x628A;viewCount+1)&#xFF0C;&#x8FD9;&#x91CC;&#x7B80;&#x4FBF;&#x8D77;&#x89C1;&#x7528;&#x7684; logger</span>
- }
-</code></pre>
-</li>
-<li>&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
-</span>{
- <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">($id)</span>
- </span>{
-     <span class="hljs-comment">//&#x8C03;&#x7528;&#x89E6;&#x53D1;&#x5668;</span>
-     event(<span class="hljs-keyword">new</span> BlogView($id));
- }
+<p><code>DownloadManagerReceiver</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DownloadManagerReceiver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BroadcastReceiver</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onReceive</span><span class="hljs-params">(Context context, Intent intent)</span> </span>{
+        String action = intent.getAction();
+        <span class="hljs-comment">//&#x76D1;&#x542C;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x4E0B;&#x8F7D;&#x5B8C;&#x6210;</span>
+        <span class="hljs-keyword">if</span> (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+            <span class="hljs-keyword">long</span> id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -<span class="hljs-number">1L</span>);
+            DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+            DownloadManager.Query query = <span class="hljs-keyword">new</span> DownloadManager.Query().setFilterById(id);
+            Cursor c = dm.query(query);
+            <span class="hljs-keyword">if</span> (c != <span class="hljs-keyword">null</span>) {
+                <span class="hljs-keyword">if</span> (c.moveToFirst()) {
+                    String fileUri = c.getString(c.getColumnIndexOrThrow(DownloadManager.COLUMN_LOCAL_URI));
+                    installAPK(context, Uri.parse(fileUri));
+                }
+                c.close();
+            }
+
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">installAPK</span><span class="hljs-params">(Context context, Uri path)</span> </span>{
+        Intent intent = <span class="hljs-keyword">new</span> Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setAction(android.content.Intent.ACTION_VIEW);
+        intent.setDataAndType(path, <span class="hljs-string">&quot;application/vnd.android.package-archive&quot;</span>);
+        context.startActivity(intent);
+    }
 }
 </code></pre>
-</li>
-</ol>
+<p>&#x5728;<code>AndroidManifest.xml</code>&#x4E2D;&#x6DFB;&#x52A0;&#x6743;&#x9650;&#xFF1A;</p>
+<pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span> /&gt;</span>
+</code></pre>
+<p>&#x6CE8;&#x518C;<code>Receiver</code></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">receiver</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.DownloadManagerReceiver&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.DOWNLOAD_COMPLETE&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span>
+</code></pre>
+<p>&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x5982;&#x5176;&#x540D;&#xFF0C;&#x4E0D;&#x7528;&#x6CE8;&#x91CA;&#x4E86;&#x5427;&#x3002;</p>
 
                                 
                                 </section>
@@ -569,10 +599,10 @@
 
             
                 
-                
-                <a href="upload.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 文件上传">
-                    <i class="fa fa-angle-right"></i>
+                <a href="crash-report.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 集成腾讯Bugly服务">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -581,7 +611,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Laravel 的事件系统","level":"1.4.1","depth":2,"next":{"title":"文件上传","level":"1.4.2","depth":2,"path":"laravel/upload.md","ref":"./laravel/upload.md","articles":[]},"previous":{"title":"Laravel","level":"1.4","depth":1,"ref":"","articles":[{"title":"Laravel 的事件系统","level":"1.4.1","depth":2,"path":"laravel/event.md","ref":"./laravel/event.md","articles":[]},{"title":"文件上传","level":"1.4.2","depth":2,"path":"laravel/upload.md","ref":"./laravel/upload.md","articles":[]},{"title":"使用 tinker 调试","level":"1.4.3","depth":2,"path":"laravel/tinker.md","ref":"./laravel/tinker.md","articles":[]},{"title":"Laravel 常用的包","level":"1.4.4","depth":2,"path":"laravel/packages.md","ref":"./laravel/packages.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"laravel/event.md","mtime":"2017-04-07T08:29:02.220Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-14T03:51:17.007Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用 DownloadManager 下载 App","level":"1.2.5","depth":2,"next":{"title":"Web 前端","level":"1.3","depth":1,"ref":"","articles":[{"title":"跨域请求","level":"1.3.1","depth":2,"path":"front-end/cors.md","ref":"./front-end/cors.md","articles":[]},{"title":"gulp 压缩图片","level":"1.3.2","depth":2,"path":"front-end/gulp-imagemin.md","ref":"./front-end/gulp-imagemin.md","articles":[]},{"title":"layer——优雅的web弹层组件","level":"1.3.3","depth":2,"path":"front-end/layer.md","ref":"./front-end/layer.md","articles":[]},{"title":"NPM","level":"1.3.4","depth":2,"path":"front-end/npm.md","ref":"./front-end/npm.md","articles":[]}]},"previous":{"title":"集成腾讯Bugly服务","level":"1.2.4","depth":2,"path":"android/crash-report.md","ref":"./android/crash-report.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/download-manager.md","mtime":"2017-06-14T03:49:49.389Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-14T03:51:17.007Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
